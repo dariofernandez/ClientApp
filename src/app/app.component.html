@@ -1,21 +1,33 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<!--  Angular uses a special HTML element, router-outlet, to display the components selected by the routing configuration
+      in app-routing.module.ts, we have for no path, a redirection to "store" that calls the class in productselection.component.ts
 
-<router-outlet></router-outlet>
+       { path: "store", component: ProductSelectionComponent },
+       { path: "", redirectTo: "/store", pathMatch: "full" }
+
+      In productSelection.component.html, we have:
+        <store-cartsummary></store-cartsummary>
+        <blazor></blazor>
+          <store-categoryfilter></store-categoryfilter>
+
+          <store-product-list></store-product-list>
+          <store-pagination></store-pagination>
+-->
+<!--  Prior:
+  <category-filter></category-filter>    ... selector in categoryFilter.component.ts
+  <product-table></product-table>        ... selector in productTable.component.ts
+-->
+
+<div class="bg-danger text-white text-center p-2 m-2" *ngIf="error != null">
+  <h6 *ngFor="let e of error">{{e}}</h6>
+  <button class="btn btn-warning" (click)="clearError()">OK</button>
+</div>
+
+<!--<router-outlet></router-outlet>-->
+
+<app-nav-bar></app-nav-bar>
+<app-section-header></app-section-header>
+
+<div class="container" style="margin-top: 1px;">
+  <router-outlet></router-outlet>
+</div>
+

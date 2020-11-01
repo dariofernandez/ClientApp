@@ -1,0 +1,13 @@
+
+  <span class="h6 ml-1">
+
+    <!--The i element is how Font Awesome icons are applied, with the classes to which the element is
+    assigned determining which icon is shown.-->
+
+    <i *ngFor="let s of stars"
+       [class]="s ? 'fas fa-star' : 'far fa-star'"
+       [style.color]="s ? 'goldenrod' : 'gray'">
+    </i>
+
+  </span>
+
